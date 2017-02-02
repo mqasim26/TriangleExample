@@ -1,0 +1,30 @@
+Code structure
+====================
+-src
+	IShape
+	Triangle
+-test
+	ShapeTest
+	TriangleTest
+
+Triangle Challenge
+====================
+To get triangle type we have to check all 3 sides, similarly we can find types of other trigonometric shapes. 
+In future we may need implementation of other shapes e.g. rectangle. To keep this in mind we should design 
+flexible structure as most of the behaviour/features are common in trigonometric shapes like perimeter, area, type etc.
+
+For abstraction we can have an interface (or abstract class) called “IShape” that can be implemented by different shapes.
+For rectangle we need four sides so we can have one shared method to pass data as array. The target method “getShapeType” 
+will validate input data and throws exception if given sides can’t be a triangle and returns type as enum. By comparing 
+sides it should return which type of triangle it is. To make this behaviour generic and easily identifiable the implemented 
+class should also provide valid types of shape, for triangle, it could be EQUILATERAL, ISOSCELES and SCALENE.
+
+Unit Testing
+====================
+To make unit test easy and re-usable we should implement similar structure for the test cases, in the coding example, 
+the abstract junit test class “ShapeTest” and implementation specific test class “TriangleTest”. Implementation will 
+also provide test data and expected result in each case for repeatable unit test. In this case it requires less effort 
+to write unit test for other implementation like RectangleTest. RectangleTest can provide required test with four sides 
+and expected result like below;
+
+new double[] { 12, 12, 12, 12 }, Rectangle.Type.QUADRILATERALS }
